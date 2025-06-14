@@ -11,14 +11,16 @@ const About = () => {
   useEffect(() => {
     gsap.fromTo(
       aboutRef.current,
-      { opacity: 0, y: 50 },
+      { opacity: 0, y: 100 },
       {
         opacity: 1,
         y: 0,
-        duration: 1.2,
+        duration: 0.5,
+        stagger: 0.2,
         scrollTrigger: {
           trigger: aboutRef.current,
-          start: "top 80%",
+          start: "top 90%",
+          toggleActions: 'play none none reverse'
         },
       }
     );

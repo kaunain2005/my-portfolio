@@ -44,15 +44,13 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { motion } from "framer-motion";
+import { ScrollTrigger, TextPlugin } from "gsap/all";
 
-import { ScrollTrigger } from "gsap/all";
-
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger,TextPlugin);
 
 const Hero = () => {
     const clipRef = useRef(null); // <-- apply clipPath to this
-
+    // Hero section for bg
     useGSAP(() => {
         gsap.set(clipRef.current, {
             clipPath: "polygon(20% 0%, 80% 0%, 90% 90%, 0% 100%)",
@@ -72,8 +70,32 @@ const Hero = () => {
         })
     }, []);
 
+    // Heor section for top text
+    useGSAP(() => {
+        gsap.to("#hero-top-para1",
+            {
+                duration: 3,
+                text: "Kaunain bolte"
+            }
+        )
+        gsap.fromTo(
+            "#hero-top-heading",
+            {
+                opacity: 0,
+                fontSize: 2000,
+            },
+            {
+                opacity: 1,
+                fontSize: 72,
+                duration: 2,
+                ease: "power2.out",
+            }
+        );
+
+    }, []);
+
     return (
-        <section className="relative w-full h-dvh overflow-hidden bg-white">
+        <section className="relative w-full h-dvh overflow-hidden bg-black">
 
             {/* Clipped Video Wrapper */}
             <div
@@ -97,8 +119,8 @@ const Hero = () => {
 
                 <div className="absolute left-0 top-0 z-40 size-full">
                     <div className="mt-25 px-5 sm:px-10">
-                        <p className="text-3xl max-w-64 font-bold text-blue-200">Hi, I am</p>
-                        <h1 className="text-blue-300 text-6xl"><b>KAUNAIN</b></h1>
+                        <p id="hero-top-para1" className="text-3xl max-w-64 font-bold text-blue-200">Hi, I am</p>
+                        <h1 id="hero-top-heading" className="text-blue-300 text-6xl"><b>KAUNAIN</b></h1>
                         <p className="text-3xl mb-5 max-w-64 ">I am very powerfull coder</p>
                     </div>
                 </div>
