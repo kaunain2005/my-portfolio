@@ -1,52 +1,9 @@
-// import { useEffect, useRef } from "react";
-// import { motion } from "framer-motion";
-// import gsap from "gsap";
-// import ScrollTrigger from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// const Hero = () => {
-//   const heroRef = useRef(null);
-
-//   useEffect(() => {
-//     gsap.from(heroRef.current, {
-//       opacity: 1,
-//       y: -50,
-//       duration: 1,
-//       scrollTrigger: {
-//         trigger: heroRef.current,
-//         start: "top center",
-//       },
-//     });
-//   }, []);
-
-//   return (
-//     <>
-//      <section ref={heroRef} className="min-h-screen flex items-center justify-center">
-//       <motion.div
-//         initial={{ scale: 0.8, opacity: 0 }}
-//         animate={{ scale: 1, opacity: 1 }}
-//         transition={{ duration: 1 }}
-//         className="text-center"
-//       >
-//         <h1 className="text-5xl font-bold">Hi, I'm Kaunain 👋</h1>
-//         <p className="mt-4 text-xl text-gray-400">
-//           Developer | Designer | Educator
-//         </p>
-//       </motion.div>
-//      </section>
-//     </>
-//   );
-// };
-
-// export default Hero;
-
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger, TextPlugin } from "gsap/all";
 
-gsap.registerPlugin(ScrollTrigger,TextPlugin);
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 const Hero = () => {
     const clipRef = useRef(null); // <-- apply clipPath to this
@@ -71,36 +28,36 @@ const Hero = () => {
     }, []);
 
     // Heor section for top text
-    useGSAP(() => {
-        gsap.to("#hero-top-para1",
-            {
-                duration: 3,
-                text: "Kaunain bolte"
-            }
-        )
-        gsap.fromTo(
-            "#hero-top-heading",
-            {
-                opacity: 0,
-                fontSize: 2000,
-            },
-            {
-                opacity: 1,
-                fontSize: 72,
-                duration: 2,
-                ease: "power2.out",
-            }
-        );
+    // useGSAP(() => {
+    //     gsap.to("#hero-top-para1",
+    //         {
+    //             duration: 3,
+    //             text: "Kaunain bolte"
+    //         }
+    //     )
+    //     gsap.fromTo(
+    //         "#hero-top-heading",
+    //         {
+    //             opacity: 0,
+    //             fontSize: 2000,
+    //         },
+    //         {
+    //             opacity: 1,
+    //             fontSize: 72,
+    //             duration: 2,
+    //             ease: "power2.out",
+    //         }
+    //     );
 
-    }, []);
+    // }, []);
 
     return (
-        <section className="relative w-full h-dvh overflow-hidden bg-black">
+        <section className="relative w-screen h-dvh overflow-x-hidden bg-white">
 
             {/* Clipped Video Wrapper */}
             <div
                 ref={clipRef}
-                className="relative z-10 h-full w-full overflow-hidden"
+                className="relative z-10 h-full w-screen overflow-x-hidden"
             >
                 {/* Background Video */}
                 <video
@@ -119,13 +76,14 @@ const Hero = () => {
 
                 <div className="absolute left-0 top-0 z-40 size-full">
                     <div className="mt-25 px-5 sm:px-10">
-                        <p id="hero-top-para1" className="text-3xl max-w-64 font-bold text-blue-200">Hi, I am</p>
+                        <p id="hero-top-para1" className="text-3xl max-w-64 font-bold text-blue-200">KAUNAIN</p>
                         <h1 id="hero-top-heading" className="text-blue-300 text-6xl"><b>KAUNAIN</b></h1>
                         <p className="text-3xl mb-5 max-w-64 ">I am very powerfull coder</p>
                     </div>
                 </div>
 
             </div>
+            <h1 className="font-title absolute bottom-10 right-10 z-3 text-7xl text-black">Hi,</h1>
         </section>
     );
 };
