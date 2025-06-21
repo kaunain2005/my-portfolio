@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowLoader(false);
-    }, 5000); // Total duration of loader animation (adjust to match your GSAP timeline)
+    }, 6000); // Total duration of loader animation (adjust to match your GSAP timeline)
 
     return () => clearTimeout(timer);
   }, []);
