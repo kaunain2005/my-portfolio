@@ -3,6 +3,8 @@ import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
 
 
+import AnimatedTitle from "../components/AnimatedTitle";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
@@ -15,6 +17,7 @@ const About = () => {
         scrub: 0.5,
         pin: true,
         pinSpacing: true,
+        markers: true,
       },
     });
 
@@ -32,6 +35,11 @@ const About = () => {
           Welcome to Zentry
         </p>
 
+        <AnimatedTitle
+          title="Welcome to Zentry"
+          containerClass="font-general text-sm uppercase md:text-[10px] text-center"
+        />
+
         <div className="about-subtext">
           <p>The Game of Games begins—your life, now an epic MMORPG</p>
           <p className="text-gray-500">
@@ -41,12 +49,12 @@ const About = () => {
         </div>
       </div>
 
-      <div className="h-dvh w-screen" id="clip">
-        <div className="mask-clip-path about-image">
+      <div className="h-dvh w-screen bg-[url(/about-main2.png)] bg-no-repeat bg-cover" id="clip">
+        <div className="mask-clip-path about-image flex items-center justify-center relative z-10">
           <img
-            src="/about1.jpg"
+            src="/custom-home.webp"
             alt="Background"
-            className="absolute left-0 top-0 size-full object-cover"
+            className="size-full object-cover"
           />
         </div>
       </div>

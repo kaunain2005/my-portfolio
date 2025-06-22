@@ -52,24 +52,14 @@ const Loader = ({ fullScreen = true }) => {
             }, `${label}+=0.1`);
         });
 
-        // Exit Animation
-        // Step 1: Move all letters (except first one) behind first letter
-        tl.to(refs.slice(1).map(r => r.current), {
-            x: -refs[0].current.getBBox().x, // move to align left with first letter
-            y: -refs[0].current.getBBox().y, // move to align top with first letter
-            scale: 0.01,
-            duration: 0.6,
-            opacity: 0.5,
-            ease: "power2.inOut"
-        }, "+=0.5");
-
-        // Step 2: Scale up the first letter
-        tl.to(refs[0].current, {
+         // Exit Animation
+        tl.to(svgRef.current, {
+            x:"450",
             scale: 90,
-            transformOrigin: "center center",
+            opacity: 1,
             duration: 1,
             ease: "power3.inOut"
-        }, "-=0.2"); // slight overlap
+        }, "+=0.5");
 
         // Optional: Hide the container after fade-out
         tl.to(containerRef.current, {
